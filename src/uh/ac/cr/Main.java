@@ -17,8 +17,9 @@ public class Main {
         do {
             //Asking What geometric figure do you want to make
             scanner = new Scanner(System.in);
-            System.out.println("What geometric figure do you want to make: " +
-                    "1-diamond" + "\n" + "2-heart shape" + "\n" + "3-square" + "\n" + "4-rectangle" + "\n" + "5-circle" + "\n" + "6-finish");
+            System.out.println("What geometric figure do you want to make: ");
+            System.out.println("1-diamond" + "\n" + "2-heart shape" + "\n" + "3-square" + "\n" + "4-rectangle" + "\n" + "5-circle" + "\n" + "6-finish");
+
             System.out.println("Your answer");
             option = scanner.nextInt();
             switch (option) {
@@ -33,10 +34,9 @@ public class Main {
 
                 case 2: //Print heart
                     scanner = new Scanner(System.in);
-                    System.out.println("Ingrese el alto, en términos de símbolos, de la figura de corazon que desea imprimir. (El número debe ser par y natural)"+
-                            "Su respuesta:");
-                    System.out.println();
-                    shape.printHeart();
+                    System.out.println("Ingrese la longitud, en términos de símbolos, de la figura de corazon que desea imprimir. (El número debe ser par y natural");
+                    int magnitude = scanner.nextInt();
+                    shape.printHeart(5);
                     break;
 
                 case 3: // Print square
@@ -44,23 +44,31 @@ public class Main {
                     System.out.println("Ingrese la longitud, en términos de símbolos, de la figura del cuadrado  que desea imprimir. (El número debe ser par y natural)");
                     int length = scanner.nextInt();
                     shape.printSquare(length);
+                    System.out.println();
                     break;
 
                 case 4: //Print rectangle
                     scanner=new Scanner(System.in);
-
-
-                    System.out.println("Ingrese la longitud, en términos de símbolos, de la figura rectangular que desea imprimir. (El número debe ser par y natural)");
-                    int dec = 5;
-                    shape.printRectangle(dec, 8);
+                    System.out.println("Ingrese la altura y ancho, en términos de símbolos, de la figura rectangular que desea imprimir. (El número debe ser par y natural)");
+                    int height=scanner.nextInt();
+                    int width=scanner.nextInt();
+                    shape.printRectangle(5, 8);
+                    System.out.println();
                     break;
 
                 case 5:// Print circle
-                    shape.printCircle();
+                    scanner=new Scanner(System.in);
+                    System.out.println("Ingrese el radio, en términos de símbolos, de la figura circular que desea imprimir. (El número debe ser par y natural)");
+                    int radius=scanner.nextInt();
+                    shape.printCircle(5);
                     break;
 
                 case 6: // finish
-                    System.out.println("THE PROGRAM ENDED");
+                    System.out.println("Fin del programa");
+                    break;
+                default:
+                    System.out.println("Valor incorrecto, por favor ingrese un valor dentro del rango 1 a 6");
+                    break;
 
             }
         } while (option <6 );{

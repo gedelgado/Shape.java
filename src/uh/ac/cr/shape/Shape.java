@@ -44,15 +44,15 @@ public class Shape {
     //TODO - What does variable x, y, z, dist1 and dist2 are doing in this code?
     //Todo - Is it easiest to understand the code when it has internal documentation?
 
-    public void printHeart() {
+    public void printHeart(int size) {
         System.out.println();   //Creating a new line, just an visual printing.
-        int size = 4;
+        int magnitude = 4;
         // first part of the heart
-        for (int x = 0; x < size; x++) {  //x=rows
-            for (int y = 0; y <= 4 * size; y++) {  // y=element                             // dist1 and dist 2 determines if you have to put a space or an asterisk.
-                double dist1 = Math.sqrt(Math.pow(x - size, 2) + Math.pow(y - size, 2));    // use methods that returns value of x to the power of y and Returns the square root of x
-                double dist2 = Math.sqrt(Math.pow(x - size, 2) + Math.pow(y - 3 * size, 2));
-                if (dist1 < size + 0.5 || dist2 < size + 0.5) {
+        for (int x = 0; x < magnitude; x++) {  //x=rows
+            for (int y = 0; y <= 4 * magnitude; y++) {  // y=element                             // dist1 and dist 2 determines if you have to put a space or an asterisk.
+                double dist1 = Math.sqrt(Math.pow(x - magnitude, 2) + Math.pow(y - magnitude, 2));    // use methods that returns value of x to the power of y and Returns the square root of x
+                double dist2 = Math.sqrt(Math.pow(x - magnitude, 2) + Math.pow(y - 3 * magnitude, 2));
+                if (dist1 < magnitude + 0.5 || dist2 < magnitude + 0.5) {
                     System.out.print("*");
                 } else {
                     System.out.print(" ");
@@ -61,11 +61,11 @@ public class Shape {
             System.out.println("");
         }
         //second part of the heart triangulo invertido
-        for (int x = 1; x < 2 * size; x++) {
+        for (int x = 1; x < 2 * magnitude; x++) {
             for (int y = 0; y < x; y++) {
                 System.out.print(" ");
             }
-            for (int y = 0; y < 4 * size + 1 - 2 * x; y++) {  //Printing all the * required.
+            for (int y = 0; y < 4 * magnitude + 1 - 2 * x; y++) {  //Printing all the * required.
                 System.out.print("*");
             }
             System.out.println("");
@@ -103,7 +103,43 @@ public class Shape {
             System.out.println("");
         }
     }
-    public void printCircle(){}
+    public void printCircle(int radius){
+        int diameter = radius % 2== 0 ? radius * 2 : radius * 2 - 1;
+        int point = radius;
+        int cont= 0;
+        boolean allow = true;
+
+        System.out.println("");
+
+        for(int row= 0; row <= radius; row++){
+            //bucle para imprimir los espacios antes de los puntos
+            for(int slot =0; slot < (diameter-point)/2; slot++){
+                System.out.print(" ");
+            }
+            //los puntos de una fila se imprimen
+            for (int asterisk = 0; asterisk < point; asterisk++){
+                System.out.print("*");
+            }
+            System.out.println("");
+            //
+            if (point!= diameter && allow){
+                point+=2;
+            }else if(cont<radius){
+                //
+                while (cont < radius){
+                    for (int asterisk = 0; asterisk < point; asterisk++){
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                    cont++;
+                }
+            } else {
+                allow = false;
+                point-=2;
+            }
+        }
+        System.out.println("");
+    }
 
   }
     
